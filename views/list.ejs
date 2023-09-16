@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>todo app</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="box" id="heading">
+  
+        <h1><%= listTitle.charAt(0).toUpperCase()
+            + listTitle.slice(1).toLowerCase() %></h1>
+    </div>
+    <div class="box">
+        <% for (let addItem of lists) { %>
+            <form action="/delete" method="post">
+                <div class="item">
+                    <input type="checkbox" name="checkbox" onChange="this.form.submit()" value="<%= addItem._id %>">
+                    <p><%= addItem.name %></p>
+                </div>
+                <input type="hidden" name="listTitleHidden" value="<%= listTitle %>"></input>
+            </form>
+        <% } %>
+
+        <form class="item" action="/" method="post">
+            <input type="text" name="addList" placeholder="New item" autocomplete="off" required>
+            <button type="submit" name="listTitle" value="<%= listTitle %>">+</button>
+        </form>
+
+    </div>
+    
+  
+
+
+</body>
+</html>
